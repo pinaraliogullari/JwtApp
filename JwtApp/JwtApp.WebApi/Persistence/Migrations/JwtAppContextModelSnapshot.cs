@@ -3,19 +3,16 @@ using JwtApp.WebApi.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace JwtApp.WebApi.Migrations
+namespace JwtApp.WebApi.Persistence.Migrations
 {
     [DbContext(typeof(JwtAppContext))]
-    [Migration("20240727112717_InitialCreate")]
-    partial class InitialCreate
+    partial class JwtAppContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

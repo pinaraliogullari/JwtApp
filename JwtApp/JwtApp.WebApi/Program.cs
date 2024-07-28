@@ -1,4 +1,6 @@
+using JwtApp.WebApi.Core.Application.Interfaces;
 using JwtApp.WebApi.Persistence.Context;
+using JwtApp.WebApi.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +19,8 @@ builder.Services.AddCors(options =>
     policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
 });
 });
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 
 builder.Services.AddEndpointsApiExplorer();

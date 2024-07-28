@@ -22,8 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Application\" />
-    <Folder Include="Persistence\Repositories\" />
+    <Folder Include="Persistence\Migrations\" />
   </ItemGroup>
 
 </Project>

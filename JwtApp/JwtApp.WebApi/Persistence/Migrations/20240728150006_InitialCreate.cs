@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace JwtApp.WebApi.Migrations
+namespace JwtApp.WebApi.Persistence.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
