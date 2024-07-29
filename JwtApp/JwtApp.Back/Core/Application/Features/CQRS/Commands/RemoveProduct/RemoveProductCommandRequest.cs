@@ -2,7 +2,7 @@
 
 namespace JwtApp.Back.Core.Application.Features.CQRS.Commands.RemoveProduct
 {
-    public class RemoveProductCommandRequest:IRequest
+    public class RemoveProductCommandRequest : IRequest
     {
         public int Id { get; set; }
 

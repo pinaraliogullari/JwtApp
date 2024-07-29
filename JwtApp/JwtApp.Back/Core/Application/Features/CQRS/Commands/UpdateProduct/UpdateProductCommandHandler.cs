@@ -18,9 +18,9 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateProduct
 
         public async Task<Unit> Handle(UpdateProductComandRequest request, CancellationToken cancellationToken)
         {
-            var updatedProduct= await _repository.GetByIdAsync(request.Id);
-            if(updatedProduct != null) 
-             await _repository.UpdateAsync(_mapper.Map<Product>(updatedProduct));
+            var updatedProduct = await _repository.GetByIdAsync(request.Id);
+            if (updatedProduct != null)
+                await _repository.UpdateAsync(_mapper.Map<Product>(updatedProduct));
             return Unit.Value;
         }
     }

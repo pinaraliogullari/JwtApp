@@ -18,7 +18,7 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Commands.CreateProduct
 
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            var createdEntity= _mapper.Map<Product>(request);
+            var createdEntity = _mapper.Map<Product>(request);
             await _repository.CreateAsync(createdEntity);
             return Unit.Value;
         }

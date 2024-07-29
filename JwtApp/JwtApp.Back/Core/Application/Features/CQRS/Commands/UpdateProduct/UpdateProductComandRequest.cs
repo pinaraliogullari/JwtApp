@@ -2,7 +2,7 @@
 
 namespace JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateProduct
 {
-    public class UpdateProductComandRequest:IRequest
+    public class UpdateProductComandRequest : IRequest
     {
         public int Id { get; set; }
         public string? Name { get; set; }
