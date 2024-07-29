@@ -20,7 +20,7 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllProduct
 
         public async Task<List<ProductListDto>> Handle(GetAllProductQueryRequest request, CancellationToken cancellationToken)
         {
-           var data= await _repository.GetAllAsync();
+            var data = await _repository.GetAllAsync();
             return _mapper.Map<List<ProductListDto>>(data);
         }
     }
