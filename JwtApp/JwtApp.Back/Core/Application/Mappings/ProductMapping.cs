@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using JwtApp.Back.Core.Application.DTOs;
 using JwtApp.Back.Core.Application.Features.CQRS.Commands.CreateProduct;
-using JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateProduct;
 using JwtApp.Back.Core.Domain;
 
 namespace JwtApp.Back.Core.Application.Mappings
@@ -12,7 +11,6 @@ namespace JwtApp.Back.Core.Application.Mappings
         {
             CreateMap<Product, ProductListDto>().ReverseMap();
             CreateMap<Product, CreateProductCommandRequest>().ReverseMap();
-            CreateMap<Product, UpdateProductComandRequest>().ReverseMap();
         }
     }
 }
