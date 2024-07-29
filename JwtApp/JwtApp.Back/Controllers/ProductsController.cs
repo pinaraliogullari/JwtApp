@@ -1,5 +1,6 @@
 ﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.CreateProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Commands.RemoveProduct;
+using JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetProduct;
 using MediatR;
@@ -44,6 +45,13 @@ namespace JwtApp.Back.Controllers
         {
             await _mediator.Send(request);
             return Created("", request);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateProductComandRequest request)
+        {
+            await _mediator.Send(request);
+            return NoContent();
         }
     }
 }
