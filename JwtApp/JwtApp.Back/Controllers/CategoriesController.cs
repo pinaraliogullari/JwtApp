@@ -1,4 +1,6 @@
 ﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.CreateCategory;
+using JwtApp.Back.Core.Application.Features.CQRS.Commands.RemoveCategory;
+using JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateCategory;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllCategories;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetCategory;
 using MediatR;
@@ -36,6 +38,20 @@ namespace JwtApp.Back.Controllers
         {
             await _mediator.Send(request);
             return Created("", request);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Update(UpdateCategoryCommandRequest request)
+        {
+            await _mediator.Send(request);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _mediator.Send(new RemoveCategoryCommandRequest(id));
+            return NoContent();
         }
     }
 }
