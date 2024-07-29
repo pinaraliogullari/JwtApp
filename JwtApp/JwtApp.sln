@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtApp.WebApi", "JwtApp.WebApi\JwtApp.WebApi.csproj", "{2AF15726-43AE-4DC6-9FB6-C2255A6E2EE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JwtApp.Back", "JwtApp.Back\JwtApp.Back.csproj", "{A7DFE674-B618-45C5-B0E9-CDEE70CDBCC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2AF15726-43AE-4DC6-9FB6-C2255A6E2EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2AF15726-43AE-4DC6-9FB6-C2255A6E2EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2AF15726-43AE-4DC6-9FB6-C2255A6E2EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2AF15726-43AE-4DC6-9FB6-C2255A6E2EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7DFE674-B618-45C5-B0E9-CDEE70CDBCC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7DFE674-B618-45C5-B0E9-CDEE70CDBCC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7DFE674-B618-45C5-B0E9-CDEE70CDBCC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7DFE674-B618-45C5-B0E9-CDEE70CDBCC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

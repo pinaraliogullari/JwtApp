@@ -1,4 +1,4 @@
-﻿namespace JwtApp.WebApi.Core.Domain
+﻿namespace JwtApp.Back.Core.Domain
 {
     public class AppRole
     {

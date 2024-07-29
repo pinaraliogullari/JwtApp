@@ -1,9 +1,9 @@
-﻿using JwtApp.WebApi.Core.Application.Interfaces;
-using JwtApp.WebApi.Persistence.Context;
+﻿using JwtApp.Back.Core.Application.Interfaces;
+using JwtApp.Back.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace JwtApp.WebApi.Persistence.Repositories
+namespace JwtApp.Back.Persistence.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class, new()
     {
@@ -14,14 +14,14 @@ namespace JwtApp.WebApi.Persistence.Repositories
             _context = context;
         }
 
-        public DbSet<T> Table=>_context.Set<T>();
+        public DbSet<T> Table => _context.Set<T>();
         public async Task CreateAsync(T entity)
         {
             await Table.AddAsync(entity);
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<T>> GetAllAsync()=>
+        public async Task<List<T>> GetAllAsync() =>
             await Table.AsNoTracking().ToListAsync();
 
 
@@ -32,7 +32,7 @@ namespace JwtApp.WebApi.Persistence.Repositories
 
         public async Task<T?> GetByIdAsync(object id) =>
             await Table.FindAsync(id);
-       
+
 
         public async Task RemoveAsync(T entity)
         {

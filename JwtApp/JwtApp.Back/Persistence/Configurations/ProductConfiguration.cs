@@ -1,8 +1,8 @@
-﻿using JwtApp.WebApi.Core.Domain;
+﻿using JwtApp.Back.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace JwtApp.WebApi.Persistence.Configurations
+namespace JwtApp.Back.Persistence.Configurations
 {
     public class ProductConfiguration : IEntityTypeConfiguration<Product>
     {

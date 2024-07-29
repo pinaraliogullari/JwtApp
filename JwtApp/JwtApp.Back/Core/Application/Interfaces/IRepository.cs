@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace JwtApp.WebApi.Core.Application.Interfaces
+namespace JwtApp.Back.Core.Application.Interfaces
 {
     public interface IRepository<T> where T : class, new()
     {

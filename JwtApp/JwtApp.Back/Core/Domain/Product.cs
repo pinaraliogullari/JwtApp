@@ -1,4 +1,4 @@
-﻿namespace JwtApp.WebApi.Core.Domain
+﻿namespace JwtApp.Back.Core.Domain
 {
     public class Product
     {
@@ -10,7 +10,7 @@
         public Category Category { get; set; }
         public Product()
         {
-            Category= new Category();
+            Category = new Category();
         }
     }
 }

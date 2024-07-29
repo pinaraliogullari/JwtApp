@@ -1,4 +1,4 @@
-﻿namespace JwtApp.WebApi.Core.Domain
+﻿namespace JwtApp.Back.Core.Domain
 {
     public class AppUser
     {
@@ -9,7 +9,7 @@
         public AppRole AppRole { get; set; }
         public AppUser()
         {
-            AppRole= new AppRole();
+            AppRole = new AppRole();
         }
     }
 }

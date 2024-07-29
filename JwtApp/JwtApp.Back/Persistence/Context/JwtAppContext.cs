@@ -1,8 +1,8 @@
-﻿using JwtApp.WebApi.Core.Domain;
+﻿using JwtApp.Back.Core.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace JwtApp.WebApi.Persistence.Context
+namespace JwtApp.Back.Persistence.Context
 {
     public class JwtAppContext : DbContext
     {

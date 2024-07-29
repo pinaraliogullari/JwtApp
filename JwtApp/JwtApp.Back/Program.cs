@@ -1,7 +1,9 @@
-using JwtApp.WebApi.Core.Application.Interfaces;
-using JwtApp.WebApi.Persistence.Context;
-using JwtApp.WebApi.Persistence.Repositories;
+using JwtApp.Back.Core.Application.Interfaces;
+using JwtApp.Back.Persistence.Context;
+using JwtApp.Back.Persistence.Repositories;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<JwtAppContext>(options => 
+//CONTEXT
+builder.Services.AddDbContext<JwtAppContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
 
+//CORS
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -20,7 +24,14 @@ builder.Services.AddCors(options =>
 });
 });
 
+//SERVÝSLER,MAPPERLER VS
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//veya
+//builder.Services.AddAutoMapper(typeof(ProductMapping));
+//builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 
 builder.Services.AddEndpointsApiExplorer();
