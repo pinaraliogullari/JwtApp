@@ -1,4 +1,5 @@
-﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.RemoveProduct;
+﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.CreateProduct;
+using JwtApp.Back.Core.Application.Features.CQRS.Commands.RemoveProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetProduct;
 using MediatR;
@@ -25,17 +26,24 @@ namespace JwtApp.Back.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProduct(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var result = await _mediator.Send(new GetProductQueryRequest(id));
             return result == null ? NotFound() : Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> RemoveProduct(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new RemoveProductCommandRequest(id));
             return NoContent();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateProductCommandRequest request)
+        {
+            await _mediator.Send(request);
+            return Created("", request);
         }
     }
 }
