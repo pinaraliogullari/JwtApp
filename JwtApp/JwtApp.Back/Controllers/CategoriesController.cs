@@ -1,4 +1,5 @@
-﻿using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllCategories;
+﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.CreateCategory;
+using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllCategories;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetCategory;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -28,6 +29,13 @@ namespace JwtApp.Back.Controllers
         {
             var result = await _mediator.Send(new GetCategoryQueryRequest(id));
             return result == null ? NotFound() : Ok(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateCategoryCommandRequest request)
+        {
+            await _mediator.Send(request);
+            return Created("", request);
         }
     }
 }
