@@ -1,6 +1,4 @@
 using JwtApp.Back.Core.Application.Interfaces;
-using JwtApp.Back.Core.Application.Token;
-using JwtApp.Back.Infrastructure.Token;
 using JwtApp.Back.Persistence.Context;
 using JwtApp.Back.Persistence.Repositories;
 using MediatR;
@@ -46,7 +44,6 @@ builder.Services.AddCors(options =>
 
 //SERVÝSLER,MAPPERLER VS
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddScoped<ITokenHandler, TokenHandler>();
 
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());

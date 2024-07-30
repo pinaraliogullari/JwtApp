@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace JwtApp.Back.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin, Member")]
     public class ProductsController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -1,5 +1,6 @@
 ﻿namespace JwtApp.Back.Core.Application.DTOs
 {
+    //kullanmadım
     public class CheckUserResponseDto
     {
         public int Id { get; set; }

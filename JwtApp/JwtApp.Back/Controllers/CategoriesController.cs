@@ -4,12 +4,14 @@ using JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateCategory;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllCategories;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetCategory;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JwtApp.Back.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class CategoriesController : ControllerBase
     {
         private readonly IMediator _mediator;

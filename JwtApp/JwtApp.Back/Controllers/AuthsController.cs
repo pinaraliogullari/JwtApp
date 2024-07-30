@@ -1,6 +1,6 @@
 ﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.RegisterUser;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.CheckUser;
-using JwtApp.Back.Core.Application.Token;
+using JwtApp.Back.Infrastructure.Token;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,12 +11,12 @@ namespace JwtApp.Back.Controllers
     public class AuthsController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly ITokenHandler _tokenHandler;
+        private readonly IConfiguration _configuration;
 
-        public AuthsController(IMediator mediator, ITokenHandler tokenHandler)
+        public AuthsController(IMediator mediator, IConfiguration configuration)
         {
             _mediator = mediator;
-            _tokenHandler = tokenHandler;
+            _configuration = configuration;
         }
 
         [HttpPost("[action]")]
@@ -31,9 +31,14 @@ namespace JwtApp.Back.Controllers
         {
             var response = await _mediator.Send(request);
             if (response.IsExist)
-                return Created("", _tokenHandler.CreateAccessToken(5));
+            {
+                JwtGenerator jwtGenerator = new(_configuration);
+                return Created("", jwtGenerator.CreateAccessToken(response));
+            }
             else
-                return BadRequest("Kullanıcı adı veya şifre hatalı");
+            {
+                return BadRequest("Kullanıcı adi veya sifre hatali");
+            }
         }
     }
 }
