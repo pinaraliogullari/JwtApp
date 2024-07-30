@@ -1,5 +1,6 @@
 ﻿using JwtApp.Back.Core.Application.Features.CQRS.Commands.RegisterUser;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.CheckUser;
+using JwtApp.Back.Core.Application.Token;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,12 @@ namespace JwtApp.Back.Controllers
     public class AuthsController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly ITokenHandler _tokenHandler;
 
-        public AuthsController(IMediator mediator)
+        public AuthsController(IMediator mediator, ITokenHandler tokenHandler)
         {
             _mediator = mediator;
+            _tokenHandler = tokenHandler;
         }
 
         [HttpPost("[action]")]
@@ -28,7 +31,7 @@ namespace JwtApp.Back.Controllers
         {
             var response = await _mediator.Send(request);
             if (response.IsExist)
-                return Created("", "token oluştur");
+                return Created("", _tokenHandler.CreateAccessToken(5));
             else
                 return BadRequest("Kullanıcı adı veya şifre hatalı");
         }

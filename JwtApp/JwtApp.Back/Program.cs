@@ -1,9 +1,13 @@
 using JwtApp.Back.Core.Application.Interfaces;
+using JwtApp.Back.Core.Application.Token;
+using JwtApp.Back.Infrastructure.Token;
 using JwtApp.Back.Persistence.Context;
 using JwtApp.Back.Persistence.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +18,22 @@ builder.Services.AddControllers();
 //CONTEXT
 builder.Services.AddDbContext<JwtAppContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection")));
+
+//JWT
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = true;
+    options.TokenValidationParameters = new()
+    {
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true, 
+        ValidateIssuerSigningKey = true,
+        ValidAudience = builder.Configuration["Token:Audience"],
+        ValidIssuer = builder.Configuration["Token:Issuer"],
+        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Token:SecurityKey"]))
+    };
+});
 
 //CORS
 builder.Services.AddCors(options =>
@@ -26,6 +46,8 @@ builder.Services.AddCors(options =>
 
 //SERVÝSLER,MAPPERLER VS
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<ITokenHandler, TokenHandler>();
+
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -48,8 +70,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors();
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 
 
 app.MapControllers();

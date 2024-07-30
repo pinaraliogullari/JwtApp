@@ -4,10 +4,12 @@ using JwtApp.Back.Core.Application.Features.CQRS.Commands.UpdateProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllProduct;
 using JwtApp.Back.Core.Application.Features.CQRS.Queries.GetProduct;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JwtApp.Back.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
