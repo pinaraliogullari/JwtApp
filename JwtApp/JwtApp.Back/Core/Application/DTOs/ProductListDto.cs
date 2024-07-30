@@ -1,5 +1,6 @@
 ﻿namespace JwtApp.Back.Core.Application.DTOs
 {
+    //kullanmadım
     public class ProductListDto
     {
         public int Id { get; set; }

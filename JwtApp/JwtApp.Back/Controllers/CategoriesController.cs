@@ -51,7 +51,7 @@ namespace JwtApp.Back.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _mediator.Send(new RemoveCategoryCommandRequest(id));
-            return NoContent();
+            return Ok();
         }
     }
 }

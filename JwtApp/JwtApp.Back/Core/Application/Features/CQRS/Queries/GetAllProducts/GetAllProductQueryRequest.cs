@@ -1,9 +1,8 @@
-﻿using JwtApp.Back.Core.Application.DTOs;
-using MediatR;
+﻿using MediatR;
 
 namespace JwtApp.Back.Core.Application.Features.CQRS.Queries.GetAllProduct
 {
-    public class GetAllProductQueryRequest : IRequest<List<ProductListDto>>
+    public class GetAllProductQueryRequest : IRequest<List<GetAllProductQueryResponse>>
     {
     }
 }

@@ -15,9 +15,9 @@ namespace JwtApp.Back.Core.Application.Features.CQRS.Commands.RemoveCategory
 
         public async Task<Unit> Handle(RemoveCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            var deletedCategory= await _repository.GetByIdAsync(request.Id);
-            if(deletedCategory != null) 
-            await _repository.RemoveAsync(deletedCategory);
+            var deletedCategory = await _repository.GetByIdAsync(request.Id);
+            if (deletedCategory != null)
+                await _repository.RemoveAsync(deletedCategory);
 
             return Unit.Value;
         }
