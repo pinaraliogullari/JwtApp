@@ -9,6 +9,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Definition</th>
+                    <th>#</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +18,7 @@
                     <tr>
                         <td>@category.Id</td>
                         <td>@category.Definition</td>
+                        <td><a class="btn btn-danger btn-sm" asp-controller="Category" asp-action="Remove" asp-route-id="@category.Id">Remove</a></td>
                     </tr>
                 }
             </tbody>

@@ -32,7 +32,7 @@ namespace JwtApp.Back.Infrastructure.Token
             SigningCredentials credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             Core.Application.DTOs.Token token = new();
-            token.Expiration = DateTime.UtcNow.AddMinutes(5);
+            token.Expiration = DateTime.UtcNow.AddDays(5);
 
             JwtSecurityToken securityToken = new(
                 audience: _configuration["Token:Audience"],
