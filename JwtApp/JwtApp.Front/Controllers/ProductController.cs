@@ -36,5 +36,18 @@ namespace JwtApp.Front.Controllers
             }
             return View();
         }
+
+        public async Task<IActionResult> Remove(int id)
+        {
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
+            {
+                var client = _httpClientFactory.CreateClient("ApiService1");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                await client.DeleteAsync($"api/Products/{id}");
+            }
+
+            return RedirectToAction("List");
+        }
     }
 }

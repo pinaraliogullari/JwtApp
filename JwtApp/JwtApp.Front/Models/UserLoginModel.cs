@@ -5,9 +5,9 @@ namespace JwtApp.Front.Models
     public class UserLoginModel
     {
         [Required(ErrorMessage = "Username alanı gereklidir.")]
-        public string Username { get; set; } = null!;
+        public string Username { get; set; } 
 
-        [Required(ErrorMessage = "Username alanı gereklidir.")]
-        public string Password { get; set; } = null!;
+        [Required(ErrorMessage = "Şifre alanı gereklidir.")]
+        public string Password { get; set; } 
     }
 }
