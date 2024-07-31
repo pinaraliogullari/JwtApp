@@ -1,6 +1,7 @@
 ﻿using JwtApp.Front.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Text;
 using System.Text.Json;
 
 namespace JwtApp.Front.Controllers
@@ -46,6 +47,37 @@ namespace JwtApp.Front.Controllers
                 var response = await client.DeleteAsync($"api/Categories/{id}");
             }
             return RedirectToAction("List");
+        }
+
+        public IActionResult Create()
+        {
+            return View(new CategoryCreateModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CategoryCreateModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+                if (token != null)
+                {
+                    var client = _httpClientFactory.CreateClient("ApiService1");
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                    var jsonData = JsonSerializer.Serialize(model);
+                    var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                    var response = await client.PostAsync("api/Categories", content);
+                    if (response.IsSuccessStatusCode)
+                        return RedirectToAction("List");
+                    else
+                        ModelState.AddModelError("", "Bir hata oluştu");
+                }
+                else
+                    return View(model);
+            }
+            return View(model);
         }
     }
 }
