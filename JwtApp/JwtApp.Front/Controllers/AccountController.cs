@@ -37,13 +37,19 @@ namespace JwtApp.Front.Controllers
                     var inComingJsonData = await response.Content.ReadAsStringAsync();
                     var tokenModel = JsonSerializer.Deserialize<JwtTokenResponseModel>(inComingJsonData, new JsonSerializerOptions
                     {
-                        PropertyNamingPolicy=JsonNamingPolicy.CamelCase
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
                     });
                     if (tokenModel != null)
                     {
                         JwtSecurityTokenHandler handler = new();
+
                         var token = handler.ReadJwtToken(tokenModel.AccessToken);
-                        var claimsIdentity = new ClaimsIdentity(token.Claims, JwtBearerDefaults.AuthenticationScheme);
+
+                        var claims = token.Claims.ToList();
+                        if (tokenModel.AccessToken != null)
+                            claims.Add(new Claim("accessToken", tokenModel.AccessToken));
+
+                        var claimsIdentity = new ClaimsIdentity(claims,JwtBearerDefaults.AuthenticationScheme);
 
                         var authProps = new AuthenticationProperties
                         {
