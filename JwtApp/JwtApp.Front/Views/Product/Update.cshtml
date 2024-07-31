@@ -1,0 +1,35 @@
+﻿@using System.Text.Json
+@model ProductUpdateModel
+
+<form asp-controller="Product" asp-action="Create" method="post" class="m-5 p-3  mx-auto w-75">
+    <input type="hidden" asp-for="@Model.Id" />
+    @{
+        TempData["Categories"] = JsonSerializer.Serialize(Model.Categories);
+    }
+    <div class="mb-3">
+        <label asp-for="@Model.Name" class="form-label">Name</label>
+        <span class="text-danger" asp-validation-for="@Model.Name"></span>
+        <input type="text" asp-for="@Model.Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Price" class="form-label">Price</label>
+        <span class="text-danger" asp-validation-for="@Model.Price"></span>
+        <input asp-for="@Model.Price" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.Stock" class="form-label">Stock</label>
+        <span class="text-danger" asp-validation-for="@Model.Stock"></span>
+        <input type="text" asp-for="@Model.Stock" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="@Model.CategoryId" class="form-label">Category</label>
+        <select class="form-select" asp-items="@Model.Categories" asp-for="@Model.CategoryId">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-100">Create</button>
+    </div>
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+    </div>
+</form>

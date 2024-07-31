@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 
@@ -59,7 +60,7 @@ namespace JwtApp.Front.Controllers
             {
                 var client = _httpClientFactory.CreateClient("ApiService1");
                 client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await client.GetAsync($"api/Categories");
+                var response = await client.GetAsync("api/Categories");
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -100,6 +101,86 @@ namespace JwtApp.Front.Controllers
                         return RedirectToAction("List");
                     ModelState.AddModelError("", "Bir hata oluştu");
                 }
+            }
+            return View(model);
+        }
+        public async Task<IActionResult> Update(int id)
+        {
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accesToken")?.Value;
+            if (token != null)
+            {
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var responseProduct = await client.GetAsync($"api/products/{id}");
+
+                if (responseProduct.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseProduct.Content.ReadAsStringAsync();
+                    var result = JsonSerializer.Deserialize<ProductUpdateModel>(jsonData, new JsonSerializerOptions
+                    {
+                        PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                    });
+
+
+
+                    var responseCategory = await client.GetAsync("api/Categories");
+
+                    if (responseCategory.IsSuccessStatusCode)
+                    {
+                        var jsonCategoryData = await responseCategory.Content.ReadAsStringAsync();
+
+                        var data = JsonSerializer.Deserialize<List<CategoryListModel>>(jsonCategoryData, new JsonSerializerOptions
+                        {
+                            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                        });
+
+                        if (result != null)
+                            result.Categories = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(data, "Id", "Definition");
+                    }
+
+
+
+                    return View(result);
+                }
+            }
+
+            return RedirectToAction("List");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Update(ProductUpdateModel model)
+        {
+            var data = TempData["Categories"]?.ToString();
+            if (data != null)
+            {
+                var categories = JsonSerializer.Deserialize<List<SelectListItem>>(data);
+                model.Categories = new SelectList(categories, "Value", "Text", model.CategoryId);
+            }
+
+
+            if (ModelState.IsValid)
+            {
+
+                var token = User.Claims.FirstOrDefault(x => x.Type == "accesToken")?.Value;
+                if (token != null)
+                {
+                    var client = _httpClientFactory.CreateClient();
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                    var jsonData = JsonSerializer.Serialize(model);
+                    var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                    var response = await client.PutAsync("api/Products", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("List");
+                    }
+                    ModelState.AddModelError("", "Bir hata oluştu");
+                }
+
             }
             return View(model);
         }
