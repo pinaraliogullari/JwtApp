@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Onion", "Onion", "{E4F53C83-C867-4AAB-B068-85B7937E31D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.JwtApp.Domain", "Onion\Core\Onion.JwtApp.Domain\Onion.JwtApp.Domain.csproj", "{C4699989-7EA9-4C4F-9DCE-F9C715045F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.JwtApp.Domain", "Onion\Core\Onion.JwtApp.Domain\Onion.JwtApp.Domain.csproj", "{C4699989-7EA9-4C4F-9DCE-F9C715045F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.JwtApp.Application", "Onion\Core\Onion.JwtApp.Application\Onion.JwtApp.Application.csproj", "{8642E9AE-A65E-4FB0-AA24-D78CE3F48EFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.JwtApp.Application", "Onion\Core\Onion.JwtApp.Application\Onion.JwtApp.Application.csproj", "{8642E9AE-A65E-4FB0-AA24-D78CE3F48EFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.JwtApp.Persistence", "Onion\Persistence\Onion.JwtApp.Persistence\Onion.JwtApp.Persistence.csproj", "{68BFFEAD-FD3C-4B66-A718-095ED2501492}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Onion.JwtApp.Persistence", "Onion\Persistence\Onion.JwtApp.Persistence\Onion.JwtApp.Persistence.csproj", "{68BFFEAD-FD3C-4B66-A718-095ED2501492}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.JwtApp.API", "Onion\Presentation\Onion.JwtApp.API\Onion.JwtApp.API.csproj", "{52ED5724-2645-4553-A453-B0B5B6F45F98}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onion.JwtApp.API", "Onion\Presentation\Onion.JwtApp.API\Onion.JwtApp.API.csproj", "{F9022693-E7A4-4581-8EF0-B189A8D0E170}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +49,10 @@ Global
 		{68BFFEAD-FD3C-4B66-A718-095ED2501492}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68BFFEAD-FD3C-4B66-A718-095ED2501492}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68BFFEAD-FD3C-4B66-A718-095ED2501492}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52ED5724-2645-4553-A453-B0B5B6F45F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52ED5724-2645-4553-A453-B0B5B6F45F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52ED5724-2645-4553-A453-B0B5B6F45F98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52ED5724-2645-4553-A453-B0B5B6F45F98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9022693-E7A4-4581-8EF0-B189A8D0E170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9022693-E7A4-4581-8EF0-B189A8D0E170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9022693-E7A4-4581-8EF0-B189A8D0E170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9022693-E7A4-4581-8EF0-B189A8D0E170}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,7 +64,7 @@ Global
 		{C4699989-7EA9-4C4F-9DCE-F9C715045F5B} = {74D9891F-F96F-4C48-8173-B6CADE65DD7F}
 		{8642E9AE-A65E-4FB0-AA24-D78CE3F48EFB} = {74D9891F-F96F-4C48-8173-B6CADE65DD7F}
 		{68BFFEAD-FD3C-4B66-A718-095ED2501492} = {4F149E8B-2F04-4BC3-A80E-1959BD028217}
-		{52ED5724-2645-4553-A453-B0B5B6F45F98} = {552B4A81-EEBD-4A0B-905A-3D663B50F816}
+		{F9022693-E7A4-4581-8EF0-B189A8D0E170} = {552B4A81-EEBD-4A0B-905A-3D663B50F816}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D99D9952-4F1D-4A11-A808-BD7ACE9A0601}
