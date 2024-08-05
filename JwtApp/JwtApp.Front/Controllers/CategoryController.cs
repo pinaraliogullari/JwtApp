@@ -97,7 +97,7 @@ namespace JwtApp.Front.Controllers
                     });
                     return View(result);
                 }
-                
+
             }
             return RedirectToAction("List");
         }
@@ -128,6 +128,6 @@ namespace JwtApp.Front.Controllers
             return View(model);
         }
 
-        
+
     }
 }

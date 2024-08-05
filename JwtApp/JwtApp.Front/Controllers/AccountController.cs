@@ -49,7 +49,7 @@ namespace JwtApp.Front.Controllers
                         if (tokenModel.AccessToken != null)
                             claims.Add(new Claim("accessToken", tokenModel.AccessToken));
 
-                        var claimsIdentity = new ClaimsIdentity(claims,JwtBearerDefaults.AuthenticationScheme);
+                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
 
                         var authProps = new AuthenticationProperties
                         {

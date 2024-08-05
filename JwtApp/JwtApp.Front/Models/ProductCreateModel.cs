@@ -5,7 +5,7 @@ namespace JwtApp.Front.Models
 {
     public class ProductCreateModel
     {
-        [Required(ErrorMessage ="Ürün adı boş geçilemez.")]
+        [Required(ErrorMessage = "Ürün adı boş geçilemez.")]
         public string? Name { get; set; }
 
         [Required(ErrorMessage = "Stok boş geçilemez.")]

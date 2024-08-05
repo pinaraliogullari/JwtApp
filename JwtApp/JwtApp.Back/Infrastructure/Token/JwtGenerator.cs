@@ -6,7 +6,7 @@ using System.Text;
 
 namespace JwtApp.Back.Infrastructure.Token
 {
-    public  class JwtGenerator
+    public class JwtGenerator
     {
         private readonly IConfiguration _configuration;
 
@@ -15,7 +15,7 @@ namespace JwtApp.Back.Infrastructure.Token
             _configuration = configuration;
         }
 
-        public   Core.Application.DTOs.Token CreateAccessToken(CheckUserQueryResponse response)
+        public Core.Application.DTOs.Token CreateAccessToken(CheckUserQueryResponse response)
         {
 
             var claims = new List<Claim>();
@@ -40,7 +40,7 @@ namespace JwtApp.Back.Infrastructure.Token
                 expires: token.Expiration,
                 notBefore: DateTime.UtcNow,
                 signingCredentials: credentials,
-                claims:claims
+                claims: claims
                 );
 
             JwtSecurityTokenHandler tokenHandler = new();

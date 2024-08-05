@@ -2,7 +2,7 @@
 
 namespace JwtApp.Front.ViewComponents
 {
-    public class NavbarViewComponent:ViewComponent
+    public class NavbarViewComponent : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
