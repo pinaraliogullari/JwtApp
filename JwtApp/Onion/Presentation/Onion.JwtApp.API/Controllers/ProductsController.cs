@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Onion.JwtApp.Application.Features.CQRS.Commands.CreateProduct;
 using Onion.JwtApp.Application.Features.CQRS.Commands.RemoveProduct;
@@ -9,6 +10,7 @@ using Onion.JwtApp.Application.Features.CQRS.Queries.GetProduct;
 namespace Onion.JwtApp.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin, Member")]
     [ApiController]
     public class ProductsController : ControllerBase
     {

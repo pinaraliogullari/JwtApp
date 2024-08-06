@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Onion.JwtApp.Application.Features.CQRS.Commands.CreateCategory;
 using Onion.JwtApp.Application.Features.CQRS.Commands.RemoveCategory;
@@ -9,6 +10,7 @@ using Onion.JwtApp.Application.Features.CQRS.Queries.GetCategory;
 namespace Onion.JwtApp.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
