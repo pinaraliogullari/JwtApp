@@ -15,10 +15,11 @@ namespace Onion.JwtApp.Persistence.Repositories
         }
 
         public DbSet<T> Table => _context.Set<T>();
-        public async Task CreateAsync(T entity)
+        public async Task<T?> CreateAsync(T entity)
         {
             await Table.AddAsync(entity);
             await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task<List<T>> GetAllAsync() =>
@@ -36,6 +37,9 @@ namespace Onion.JwtApp.Persistence.Repositories
             Table.Remove(entity);
             await _context.SaveChangesAsync();
         }
+
+        public Task<int> SaveChangesAsync()=>
+            _context.SaveChangesAsync();
 
         public async Task Update(T entity)
         {

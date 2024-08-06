@@ -7,8 +7,9 @@ namespace Onion.JwtApp.Application.Interfaces
         Task<List<T>> GetAllAsync();
         Task<T?> GetByIdAsync(object id);
         Task<T?> GetByFilterAsync(Expression<Func<T, bool>> filter);
-        Task CreateAsync(T entity);
+        Task<T?> CreateAsync(T entity);
         Task Update(T entity);
         Task Remove(T entity);
+        Task<int> SaveChangesAsync();
     }
 }
