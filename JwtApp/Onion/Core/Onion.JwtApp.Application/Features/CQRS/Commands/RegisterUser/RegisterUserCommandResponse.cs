@@ -2,5 +2,6 @@
 {
     public class RegisterUserCommandResponse
     {
+        public int Id { get; set; }
     }
 }

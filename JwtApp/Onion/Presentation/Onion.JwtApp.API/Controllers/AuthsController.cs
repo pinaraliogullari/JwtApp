@@ -22,8 +22,8 @@ namespace Onion.JwtApp.API.Controllers
         [HttpPost("[action]")]
         public async Task<IActionResult> Register(RegisterUserCommandRequest request)
         {
-            await _mediator.Send(request);
-            return Created("", request);
+            var result= await _mediator.Send(request);
+            return Created("", result);
         }
 
         [HttpPost("[action]")]
